@@ -8,6 +8,21 @@
   --primary: #fbb1bd;
 }
 
+.title::before,.title::after{
+  content: '';
+  top: 40px;
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: var(--primary);
+}
+.title::before{
+  transform: translateX(-35px);
+}
+.title::after{
+  transform: translateX(10px);
+}
+
 
 /* animation */
 @keyframes toRightAnimation{
