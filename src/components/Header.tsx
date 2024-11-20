@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { links } from "../constants/data";
+import Footer from "./Footer";
 
 export default function Header() {
   return (
@@ -29,6 +30,8 @@ export default function Header() {
       </div>
 
       <Outlet />
+
+      <Footer />
     </>
   );
 }
