@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between bg-[--primary] pt-5">
+      <div className="flex flex-col lg:flex-row justify-between bg-[--primary] pt-5" style={{minHeight:'632px'}}>
         <div
           className="flex flex-col justify-center items-center gap-10 text-white lg:w-1/2 opacity-0"
           ref={title}
