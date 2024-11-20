@@ -23,7 +23,7 @@ export default function Header() {
 
         <div className="flex gap-5">
           {links.map(({ name, url }) => {
-            return <Link to={url}>{name}</Link>;
+            return <Link to={url} key={name}>{name}</Link>;
           })}
         </div>
       </div>

@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import Title from "../components/Title";
+import { products } from "../constants/data";
+import ProductCard from "../components/ProductCard";
 
 export default function Home() {
   const { ref: title, entry: titleEntry, inView: titleInView } = useInView();
@@ -43,7 +45,7 @@ export default function Home() {
           </div>
           <Link
             to={"/products"}
-            className="bg-white text-[--primary] text-lg font-bold p-3 rounded-md cursor-pointer"
+            className="bg-white hover:bg-[--secondary] text-[--primary] text-lg font-bold p-3 rounded-md cursor-pointer"
           >
             Explore
           </Link>
@@ -56,7 +58,13 @@ export default function Home() {
         </div>
       </div>
 
-      <Title title="Popular Products"/>
+      <Title title="Popular Products" />
+
+      <div className="flex flex-wrap justify-center gap-5 p-5">
+        {products.slice(0, 4).map((product) => {
+          return <ProductCard key={product.id} product={product} />;
+        })}
+      </div>
     </>
   );
 }
