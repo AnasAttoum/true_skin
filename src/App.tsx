@@ -6,6 +6,7 @@ import Loading from "./pages/Loading";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./constants/data";
 import { HelmetProvider } from "react-helmet-async";
+import Auth from "./utils/Auth";
 
 const LazyHome = lazy(() => import("./pages/Home"));
 const LazyProducts = lazy(() => import("./pages/Products"));
@@ -14,24 +15,26 @@ const LazyCart = lazy(() => import("./pages/Cart"));
 
 function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes>
+    <Auth>
+      <HelmetProvider>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Routes>
 
-            <Route path="/" element={<Header />}>
+              <Route path="/" element={<Header />}>
 
-              <Route index element={<Suspense fallback={<Loading />}><LazyHome /></Suspense>} />
-              <Route path="products" element={<Suspense fallback={<Loading />}><LazyProducts /></Suspense>} />
-              <Route path="products/:productId" element={<Suspense fallback={<Loading />}><LazyProductDetails /></Suspense>} />
-              <Route path="cart" element={<Suspense fallback={<Loading />}><LazyCart /></Suspense>} />
+                <Route index element={<Suspense fallback={<Loading />}><LazyHome /></Suspense>} />
+                <Route path="products" element={<Suspense fallback={<Loading />}><LazyProducts /></Suspense>} />
+                <Route path="products/:productId" element={<Suspense fallback={<Loading />}><LazyProductDetails /></Suspense>} />
+                <Route path="cart" element={<Suspense fallback={<Loading />}><LazyCart /></Suspense>} />
 
-            </Route>
+              </Route>
 
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </HelmetProvider>
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </HelmetProvider>
+    </Auth>
   );
 }
 

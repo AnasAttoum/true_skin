@@ -3,10 +3,14 @@ import { useParams } from "react-router-dom";
 import { products } from "../constants/data";
 import QuantityInput from "../components/inputs/QualityInput";
 import { useInView } from "react-intersection-observer";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../lib/slices/cartSlice";
 
 export default function ProductDetails() {
   const { ref: title, entry: titleEntry, inView: titleInView } = useInView();
   const { ref: image, entry: imageEntry, inView: imageInView } = useInView();
+
+  const dispatch = useDispatch();
 
   const { productId } = useParams();
   const [data, setData] = useState({
@@ -17,6 +21,7 @@ export default function ProductDetails() {
     description: "",
   });
   const [quantity, setQuantity] = useState(1);
+  const [addToCartText, setAddToCartText] = useState("Add To Cart");
 
   useEffect(() => {
     if (productId) {
@@ -30,21 +35,29 @@ export default function ProductDetails() {
   useEffect(() => {
     if (titleInView && titleEntry) {
       (titleEntry.target as HTMLElement).style.animation =
-        "toLeftAnimation 1s .5s forwards";
+        "toLeftAnimation 1s forwards";
     }
     if (imageInView && imageEntry) {
       (imageEntry.target as HTMLElement).style.animation =
-        "opacityAnimation 1s 1.5s forwards";
+        "opacityAnimation 1s 1s forwards";
     }
   }, [titleInView, titleEntry, imageInView, imageEntry]);
 
   const handleAddToCart = () => {
-    console.log(quantity);
+    if(productId){
+      setAddToCartText('Added Successfully')
+      dispatch(addToCart({ id: parseInt(productId), quantity: quantity }));
+      setTimeout(()=>{
+        setAddToCartText("Add To Cart");
+      },1000)}
   };
 
   return (
     <div className="flex max-lg:flex-col-reverse justify-center gap-5">
-      <div className="flex justify-center w-full lg:w-1/2 h-screen opacity-0" ref={image}>
+      <div
+        className="flex justify-center w-full lg:w-1/2 h-screen opacity-0"
+        ref={image}
+      >
         <img
           src={data.image}
           alt={data.name}
@@ -52,7 +65,10 @@ export default function ProductDetails() {
         />
       </div>
 
-      <div className="flex flex-col justify-evenly gap-5 w-full lg:w-1/2 p-5 opacity-0" ref={title}>
+      <div
+        className="flex flex-col justify-evenly gap-5 w-full lg:w-1/2 p-5 opacity-0"
+        ref={title}
+      >
         <div className="text-3xl text-[--primary] font-extrabold">
           {data.name}
         </div>
@@ -76,7 +92,7 @@ export default function ProductDetails() {
 
               <div className="flex">
                 <div className="btn" onClick={handleAddToCart}>
-                  Add To Cart
+                  {addToCartText}
                 </div>
               </div>
             </>

@@ -15,6 +15,8 @@ import {
 import { links } from "../constants/data";
 import Footer from "./Footer";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../lib/store";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -27,6 +29,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 export default function Header() {
 
+  const cart = useSelector((state:RootState)=>state.cart)
   const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -84,7 +87,7 @@ export default function Header() {
         <div className="flex items-center gap-5">
           <Link to={'/cart'}>
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={2} sx={{ color: "#fff" }}>
+              <StyledBadge badgeContent={cart.length} sx={{ color: "#fff" }}>
                 <ShoppingCartIcon sx={{ color: "#fff" }} />
               </StyledBadge>
             </IconButton>
