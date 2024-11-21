@@ -29,6 +29,38 @@ body{
   transform: translateX(10px);
 }
 
+/* loading page */
+.loading {
+  width:50px;
+  height: 50px;
+  display: grid;
+}
+.loading:before,
+.loading:after {
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: #fbb1bd;
+  mask:repeating-linear-gradient(#000 0 5px,#0000 0 10px);
+  -webkit-mask:repeating-linear-gradient(#000 0 5px,#0000 0 10px);
+  animation: sh5 1.5s infinite;
+}
+.loading:after {
+  mask:repeating-linear-gradient(#0000 0 5px,#000 0 10px);
+  -webkit-mask:repeating-linear-gradient(#0000 0 5px,#000 0 10px);
+  --s:-1;
+}
+
+@keyframes sh5 {
+  0%,
+  10% {transform: translate(0) rotate(0)}
+  35% {transform: translate(calc(var(--s,1)*50%)) rotate(0)}
+  66% {transform: translate(calc(var(--s,1)*50%)) rotate(calc(var(--s,1)*180deg))}
+  90%,
+  100% {transform: translate(0) rotate(calc(var(--s,1)*180deg))}
+}
+
+
 
 /* animation */
 @keyframes toRightAnimation{
