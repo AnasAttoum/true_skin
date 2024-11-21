@@ -29,6 +29,24 @@ body{
   transform: translateX(10px);
 }
 
+.btn{
+  @apply bg-[--primary] text-lg text-white py-1 px-3 font-bold rounded-md cursor-pointer transition-all relative overflow-hidden
+}
+.btn::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -15px;
+  width: 10px ;
+  height: 100%;
+  background-color: white;
+  transform: skewX(-20deg);
+  transition: all .3s;
+}
+.btn:hover::before{
+  left: calc(100% + 15px);
+}
+
 /* loading page */
 .loading {
   width:50px;

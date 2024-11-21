@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 const LazyHome = lazy(() => import("./pages/Home"));
 const LazyProducts = lazy(() => import("./pages/Products"));
+const LazyProductDetails = lazy(() => import("./pages/ProductDetails"));
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
               <Route index element={<Suspense fallback={<Loading />}><LazyHome /></Suspense>} />
               <Route path="products" element={<Suspense fallback={<Loading />}><LazyProducts /></Suspense>} />
+              <Route path="products/:productId" element={<Suspense fallback={<Loading />}><LazyProductDetails /></Suspense>} />
 
             </Route>
 
