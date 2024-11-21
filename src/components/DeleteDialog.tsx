@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function DeleteDialog({ open, handleClose, handleDelete }: { open: boolean, handleClose: () => void, handleDelete: () => void }) {
+function DeleteDialog({ open, handleClose, handleAgree, text }: { open: boolean, handleClose: () => void, handleAgree: () => void, text:string }) {
 
     return (
         <React.Fragment>
@@ -28,7 +28,7 @@ function DeleteDialog({ open, handleClose, handleDelete }: { open: boolean, hand
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{"Are you sure that you want to remove this product?"}</DialogTitle>
+                <DialogTitle>{text}</DialogTitle>
                 <DialogContent>
                     {/* <DialogContentText id="alert-dialog-slide-description">
                         Let Google help apps determine location. This means sending anonymous
@@ -37,7 +37,7 @@ function DeleteDialog({ open, handleClose, handleDelete }: { open: boolean, hand
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} sx={{ color: 'gray' }}>Disagree</Button>
-                    <Button onClick={handleDelete} sx={{ color: 'var(--primary)' }}>Agree</Button>
+                    <Button onClick={handleAgree} sx={{ color: 'var(--primary)' }}>Agree</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

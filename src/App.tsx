@@ -8,6 +8,8 @@ import { theme } from "./constants/data";
 import { HelmetProvider } from "react-helmet-async";
 import Auth from "./utils/Auth";
 
+const LazySignUp = lazy(() => import("./pages/SignUp"));
+
 const LazyHome = lazy(() => import("./pages/Home"));
 const LazyProducts = lazy(() => import("./pages/Products"));
 const LazyProductDetails = lazy(() => import("./pages/ProductDetails"));
@@ -20,6 +22,8 @@ function App() {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Routes>
+
+              <Route path="/signup" element={<Suspense fallback={<Loading />}><LazySignUp /></Suspense>} />
 
               <Route path="/" element={<Header />}>
 

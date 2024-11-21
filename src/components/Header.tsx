@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -14,9 +14,11 @@ import {
 } from "@mui/material";
 import { links } from "../constants/data";
 import Footer from "./Footer";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../lib/store";
+import DeleteDialog from "./DeleteDialog";
+import { logOut } from "../lib/slices/userSlice";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -30,10 +32,30 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 export default function Header() {
 
   const cart = useSelector((state:RootState)=>state.cart)
+  const { isLogged } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  const [openLogOutModal, setOpenLogOutModal] = useState(false);
+  const handleOpenLogOutModal = () => {
+    setOpenLogOutModal(true);
+  };
+  const handleCloseLogOutModal = () => setOpenLogOutModal(false);
+  const handleLogOut = () => {
+    dispatch(logOut());
+    handleCloseLogOutModal();
+  };
+
+  useEffect(()=>{
+    if(pathname!=='/'&&!isLogged)
+      navigate('/login')
+  },[pathname, isLogged, navigate])
 
   return (
     <>
@@ -74,43 +96,79 @@ export default function Header() {
           </div>
         </Link>
 
-        <div className="hidden sm:flex gap-5">
-          {links.map(({ name, url }) => {
-            return (
-              <Link to={url} key={name}>
-                {name}
+        {isLogged ? (
+          <>
+            <div className="hidden sm:flex gap-5">
+              {links.map(({ name, url }) => {
+                return (
+                  <Link to={url} key={name}>
+                    {name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link to={"/cart"}>
+                <IconButton aria-label="cart">
+                  <StyledBadge
+                    badgeContent={cart.length}
+                    sx={{ color: "#fff" }}
+                  >
+                    <ShoppingCartIcon sx={{ color: "#fff" }} />
+                  </StyledBadge>
+                </IconButton>
               </Link>
-            );
-          })}
-        </div>
 
-        <div className="flex items-center gap-5">
-          <Link to={'/cart'}>
-            <IconButton aria-label="cart">
-              <StyledBadge badgeContent={cart.length} sx={{ color: "#fff" }}>
-                <ShoppingCartIcon sx={{ color: "#fff" }} />
-              </StyledBadge>
-            </IconButton>
-          </Link>
+              <svg
+                className="cursor-pointer max-sm:hidden"
+                onClick={handleOpenLogOutModal}
+                xmlns="http://www.w3.org/2000/svg"
+                width="2em"
+                height="2em"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinejoin="round"
+                    d="M10 12h10m0 0l-3-3m3 3l-3 3"
+                  ></path>
+                  <path d="M4 12a8 8 0 0 1 8-8m0 16a7.99 7.99 0 0 1-6.245-3"></path>
+                </g>
+              </svg>
 
-          <svg
-            className="inline-block sm:hidden cursor-pointer"
-            onClick={toggleDrawer(true)}
-            xmlns="http://www.w3.org/2000/svg"
-            width="2em"
-            height="2em"
-            viewBox="0 0 32 32"
+              <svg
+                className="inline-block sm:hidden cursor-pointer"
+                onClick={toggleDrawer(true)}
+                xmlns="http://www.w3.org/2000/svg"
+                width="2em"
+                height="2em"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  fill="none"
+                  stroke="#fff"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 8h22M5 16h22M5 24h22"
+                ></path>
+              </svg>
+            </div>
+          </>
+        ) : (
+          <Link
+            to={"/login"}
+            className="bg-white text-[--primary] px-3 py-2 rounded-md hover:bg-[--secondary]"
           >
-            <path
-              fill="none"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 8h22M5 16h22M5 24h22"
-            ></path>
-          </svg>
-        </div>
+            Log In
+          </Link>
+        )}
       </div>
 
       <Drawer anchor={"right"} open={open} onClose={toggleDrawer(false)}>
@@ -186,9 +244,42 @@ export default function Header() {
                 </ListItem>
               </Link>
             ))}
+            <ListItem disablePadding onClick={handleOpenLogOutModal}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2em"
+                    height="2em"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="#f50a10"
+                      strokeLinecap="round"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinejoin="round"
+                        d="M10 12h10m0 0l-3-3m3 3l-3 3"
+                      ></path>
+                      <path d="M4 12a8 8 0 0 1 8-8m0 16a7.99 7.99 0 0 1-6.245-3"></path>
+                    </g>
+                  </svg>
+                </ListItemIcon>
+                <ListItemText primary="Logout" sx={{ color: "#f50a10" }} />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Box>
       </Drawer>
+
+      <DeleteDialog
+        open={openLogOutModal}
+        handleClose={handleCloseLogOutModal}
+        handleAgree={handleLogOut}
+        text="Are you sure that you want to logout?"
+      />
 
       <Outlet />
 

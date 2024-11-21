@@ -34,8 +34,7 @@ export default function Tale() {
         </div>
         <div className="text-justify text-lg lg:text-2xl max-lg:p-5 w-full lg:w-1/3 bg-[--secondary] p-5 rounded-lg opacity-0" ref={title}>
           Our tale began with a passion for natural beauty and a commitment to
-          creating effective, ethical skincare. Inspired by [mention
-          inspiration, e.g., ancestral remedies, a personal journey], we
+          creating effective, ethical skincare. We
           handcraft each product with love and care, using only the finest
           ingredients.
         </div>

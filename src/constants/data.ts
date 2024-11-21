@@ -248,3 +248,8 @@ export const products = [
       "Experience the power of hydration with Neutrogena Hydro Boost Hyaluronic Acid. This unique formula, featuring hyaluronic acid, draws moisture from the air and locks it into your skin for long-lasting hydration. The lightweight, oil-free gel absorbs quickly without feeling sticky, perfect for all skin types. See visibly plumper, smoother, and healthier-looking skin.",
   },
 ];
+
+export const users = [
+  {name: 'Admin', email: 'admin@trueskin.com', address: 'Homs, Syria', password: '12345', isAdmin:true},
+  {name: 'Anas Attoum', email: 'user@trueskin.com', address: 'Homs, Syria', password: '12345', isAdmin:false},
+]

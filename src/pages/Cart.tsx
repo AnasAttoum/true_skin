@@ -88,7 +88,7 @@ export default function Cart() {
         </div>
       )}
 
-      <DeleteDialog open={openDeleteModal} handleClose={handleCloseDeleteModal} handleDelete={handleDelete}/>
+      <DeleteDialog open={openDeleteModal} handleClose={handleCloseDeleteModal} handleAgree={handleDelete} text="Are you sure that you want to remove this product?"/>
     </>
   );
 }
