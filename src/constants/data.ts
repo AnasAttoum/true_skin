@@ -18,6 +18,7 @@ export const products = [
     id: 1,
     name: "Lala Retro Moisturizing Whipped Cream",
     price: 30.95,
+    stock: 10,
     image: "/images/products/Drunk elephant Lala retro whipped cream.jpeg",
     description:
       "Indulge your skin with Lala Retro Moisturizing Whipped Cream, a luxurious daily moisturizer that melts into your skin, delivering intense hydration without feeling heavy. This whipped cream texture is incredibly rich and comforting, leaving your complexion soft, supple, and noticeably smoother. Perfect for dry and mature skin types, Lala Retro helps to restore your skin's natural radiance and protect against environmental stressors.",
@@ -26,6 +27,7 @@ export const products = [
     id: 2,
     name: "Exfoliate Paula’s Choice",
     price: 75.95,
+    stock: 8,
     image: "/images/products/Amazon Best Seller in Facial Peels.jpeg",
     description:
       "Paulas Choice--SKIN PERFECTING 2% BHA Liquid Salicylic Acid Exfoliant--Facial Exfoliant for Blackheads, Enlarged Pores, Wrinkles & Fine Lines, 4 oz Bottle",
@@ -34,6 +36,7 @@ export const products = [
     id: 3,
     name: "Salicylic Acid for Your Skin",
     price: 50.25,
+    stock: 3,
     image:
       "/images/products/The Best Salicylic Acid Products for Your Skin.jpeg",
     description:
@@ -43,6 +46,7 @@ export const products = [
     id: 4,
     name: "Watermelon Glow PHA + BHA",
     price: 30.95,
+    stock: 7,
     image:
       "/images/products/How often you should actually exfoliate and the best way to do it, according to derms.jpeg",
     description:
@@ -52,6 +56,7 @@ export const products = [
     id: 5,
     name: "Curology Liquid Pore Exfoliant",
     price: 24.75,
+    stock: 2,
     image:
       "/images/products/Curology Liquid Pore Exfoliant with 2_ BHA, 8_ AHA_PHA and 1_ Zinc - 4 fl oz.jpeg",
     description:
@@ -61,6 +66,7 @@ export const products = [
     id: 6,
     name: "Mediheal Tea Tree Trouble Pad",
     price: 19,
+    stock: 10,
     image:
       "/images/products/OLIVE YOUNG Global _ Korea's No_ 1 Health & Beauty Store.jpeg",
     description:
@@ -70,6 +76,7 @@ export const products = [
     id: 7,
     name: "The Base Face Milk",
     price: 47.95,
+    stock: 10,
     image:
       "/images/products/ILIA - The Base Face Milk Essence + Lightweight Moisturizer.jpeg",
     description:
@@ -79,6 +86,7 @@ export const products = [
     id: 8,
     name: "Sunscreen La Roche Posay",
     price: 26,
+    stock: 10,
     image: "/images/products/sunscreen La Roche Posay.jpeg",
     description:
       "La Roche-Posay Sunscreen provides superior broad-spectrum UVA/UVB protection to help prevent sunburn and long-term sun damage. Formulated with [mention specific technology, e.g., Mexoplex®], this lightweight, [mention texture, e.g., non-greasy] sunscreen is suitable for [mention skin type, e.g., sensitive skin] and leaves skin feeling comfortable and protected all day long. Helps prevent premature aging and the appearance of dark spots.",
@@ -87,6 +95,7 @@ export const products = [
     id: 9,
     name: "Vitamin C La Roche Posay",
     price: 40.42,
+    stock: 4,
     image:
       "/images/products/New Drugstore Skincare Drops Your Complexion Will Thank You For In 2020.jpeg",
     description:
@@ -96,6 +105,7 @@ export const products = [
     id: 10,
     name: "Body Lotions for Buttery-Smooth Skin",
     price: 70.22,
+    stock: 10,
     image: "/images/products/16 Best Body Lotions for Buttery-Smooth Skin.jpeg",
     description:
       "Transform your skin's texture with our rich and creamy Body Lotion. Formulated with [mention key ingredients, e.g., shea butter, vitamin E, hyaluronic acid], this lotion absorbs quickly without feeling greasy, leaving your skin feeling incredibly soft, smooth, and luxuriously hydrated – like butter! Perfect for all skin types.",
@@ -104,6 +114,7 @@ export const products = [
     id: 11,
     name: "Moisturizing Cream CeraVe",
     price: 27.5,
+    stock: 10,
     image:
       "/images/products/The 25 Top-Selling Beauty Buys on Amazon in 2019.jpeg",
     description:
@@ -113,6 +124,7 @@ export const products = [
     id: 12,
     name: "Oil free Moisturizer - Skincare Villa",
     price: 16.95,
+    stock: 25,
     image:
       "/images/products/Best Oil free Moisturizer in India - Skincare Villa.jpeg",
     description:
@@ -122,6 +134,7 @@ export const products = [
     id: 13,
     name: "Hair grow product and skin care products Beauty",
     price: 35.33,
+    stock: 10,
     image:
       "/images/products/Amaka Adindu's Amazon Page - Hair grow product and skin care products Beauty.jpeg",
     description:
@@ -131,6 +144,7 @@ export const products = [
     id: 14,
     name: "Tatcha Hinoki Body Wash",
     price: 40.5,
+    stock: 3,
     image:
       "/images/products/The Best New Skincare Products of October 2022.jpeg",
     description:
@@ -140,6 +154,7 @@ export const products = [
     id: 15,
     name: "Night Creams Derms Love for Aging Skin",
     price: 16.25,
+    stock: 10,
     image: "/images/products/17 Night Creams Derms Love for Aging Skin.jpeg",
     description:
       "Experience the transformative power of this dermatologist-approved night cream. Formulated with [mention key ingredients like retinol, hyaluronic acid, peptides etc.], this cream deeply hydrates, plumps, and firms your skin overnight. Reduce the appearance of wrinkles, improve skin elasticity, and awaken to a visibly smoother, more youthful complexion. Perfect for all mature skin types.",
@@ -148,6 +163,7 @@ export const products = [
     id: 16,
     name: "elf flawless hydrating kit",
     price: 22.45,
+    stock: 1,
     image: "/images/products/elf flawless hydrating kit.jpeg",
     description:
       "Unlock your skin's natural radiance with the e.l.f. Flawless Hydrating Kit. This three-piece set features a gentle hydrating cleanser to purify and prepare your skin, a lightweight serum packed with [mention key ingredients, e.g., hyaluronic acid] to boost hydration, and a rich moisturizer to lock in moisture for all-day comfort. Experience visibly smoother, healthier-looking skin with this complete hydration solution.",
@@ -156,6 +172,7 @@ export const products = [
     id: 17,
     name: "Ouai x Summer Fridays Masking",
     price: 15.1,
+    stock: 3,
     image:
       "/images/products/Prepare to See This Ouai x Summer Fridays Masking Set All Over Instagram.jpeg",
     description:
@@ -165,6 +182,7 @@ export const products = [
     id: 18,
     name: "TULA Skincare Brightening Treatment Drops Triple Vitamin C Serum",
     price: 56.9,
+    stock: 10,
     image:
       "/images/products/TULA Skincare Brightening Treatment Drops Triple Vitamin C Serum, 1 fl_ oz _ Dermstore.jpeg",
     description:
@@ -174,6 +192,7 @@ export const products = [
     id: 19,
     name: "Vegan Ceramide Moisture Barrier Repair Skincare Products",
     price: 17,
+    stock: 6,
     image:
       "/images/products/Vegan Ceramide Moisture Barrier Repair Skincare Products.jpeg",
     description:
@@ -183,6 +202,7 @@ export const products = [
     id: 20,
     name: "BYOMA Melting Cleansing Balm",
     price: 12,
+    stock: 10,
     image: "/images/products/BYOMA Melting Cleansing Balm - 2_12oz.jpeg",
     description:
       "Melt away the day's grime and makeup with our luxurious cleansing balm. This rich, yet lightweight formula effortlessly dissolves even the most stubborn waterproof mascara and sunscreen, leaving your skin feeling clean, soft, and deeply nourished. Infused with [mention key ingredients and their benefits, e.g., skin-soothing chamomile and hydrating squalane], our balm transforms from a solid to a silky oil upon contact with skin, then rinses away completely leaving no greasy residue. Perfect for all skin types, even sensitive. Experience the transformative power of a truly clean and comfortable complexion.",
@@ -191,6 +211,7 @@ export const products = [
     id: 21,
     name: "Eye Cream Laneige",
     price: 15.5,
+    stock: 3,
     image:
       "/images/products/This Is the Very Best Eye Cream on the Market.jpeg",
     description:
@@ -200,6 +221,7 @@ export const products = [
     id: 22,
     name: "Mario Badescu Facial Spray with Aloe, Chamomile and Lavender | Sephora",
     price: 27,
+    stock: 26,
     image:
       "/images/products/Mario Badescu Facial Spray with Aloe, Chamomile and Lavender _ Sephora.jpeg",
     description:
@@ -209,6 +231,7 @@ export const products = [
     id: 23,
     name: "Drunk Elephant Protini Polypeptide Cream",
     price: 27,
+    stock: 16,
     image:
       "/images/products/Drunk Elephant Protini Polypeptide Cream_ Protein Face Moisturizer with Amino Acids (50 mL _ 1.jpeg",
     description:
@@ -218,6 +241,7 @@ export const products = [
     id: 24,
     name: "Hydro Boost Hyaluronic Acid Skin Care | Neutrogena",
     price: 37.9,
+    stock: 18,
     image:
       "/images/products/Hydro Boost Hyaluronic Acid Skin Care _ Neutrogena®.jpeg",
     description:
