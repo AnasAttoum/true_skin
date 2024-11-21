@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loggedIn } from "../lib/slices/userSlice";
 import { RootState } from "../lib/store";
 import { users } from "../constants/data";
+import HelmetDetails from "../components/HelmetDetails";
 
 export default function SignUp() {
 const { ref: title, entry: titleEntry, inView: titleInView } = useInView();
@@ -23,7 +24,7 @@ const { isLogged }=useSelector((state:RootState)=>state.user)
 useEffect(() => {
     if (titleInView && titleEntry) {
     (titleEntry.target as HTMLElement).style.animation =
-        "toRightAnimation 1s 1.5s forwards";
+        "toLeftAnimation 1s 1.5s forwards";
     }
     if (imageInView && imageEntry) {
     (imageEntry.target as HTMLElement).style.animation =
@@ -82,38 +83,81 @@ useEffect(()=>{
   };
 
   return (
-    <div className="flex items-center justify-between relative">
-      <div className="flex max-md:absolute max-md:w-full max-md:min-h-screen max-md:opacity-5 justify-start w-1/2 h-screen opacity-0" ref={image}>
-        <img
-          src="/images/Skin Products Wallpaper.jpeg"
-          alt="True Skin"
-          className="object-cover w-full h-full"
-        />
-      </div>
+    <>
+      <HelmetDetails
+        title="Sign Up"
+        href="/signup"
+        description="Sign Up now to True Skin"
+      />
+      <div className="flex items-center justify-between relative">
+        <div
+          className="flex max-md:absolute max-md:w-full max-md:min-h-screen max-md:opacity-5 justify-start w-1/2 h-screen opacity-0"
+          ref={image}
+        >
+          <img
+            src="/images/Skin Products Wallpaper.jpeg"
+            alt="True Skin"
+            className="object-cover w-full h-full"
+          />
+        </div>
 
-      <div className="flex flex-col gap-5 w-full md:w-1/2 max-md:bg-[#fff9] max-md:backdrop-blur-sm max-md:min-h-screen">
-        <div>
+        <div className="flex flex-col gap-5 w-full md:w-1/2 max-md:bg-[#fff9] max-md:backdrop-blur-sm max-md:min-h-screen">
+          <div>
             <Title title="Welcome To True Skin" />
             <Title title="Sign Up" />
-        </div>
+          </div>
 
-        <div className="flex flex-col opacity-0" ref={title}>
-            <BasicTextField val={data.name} handleChange={handleChange} error={error.name} name="name" label="Name" />
-            <BasicTextField val={data.email} handleChange={handleChange} error={error.email} name="email" label="Email" />
-            <BasicTextField val={data.address} handleChange={handleChange} error={error.address} name="address" label="Address" />
-            <BasicPasswordField val={data.password} handleChange={handleChange} error={error.password} name="password" />
-            
+          <div className="flex flex-col opacity-0" ref={title}>
+            <BasicTextField
+              val={data.name}
+              handleChange={handleChange}
+              error={error.name}
+              name="name"
+              label="Name"
+            />
+            <BasicTextField
+              val={data.email}
+              handleChange={handleChange}
+              error={error.email}
+              name="email"
+              label="Email"
+            />
+            <BasicTextField
+              val={data.address}
+              handleChange={handleChange}
+              error={error.address}
+              name="address"
+              label="Address"
+            />
+            <BasicPasswordField
+              val={data.password}
+              handleChange={handleChange}
+              error={error.password}
+              name="password"
+            />
+
             <div className="text-center text-red-500">{errorFromBackend}</div>
             <div className="flex flex-col gap-5">
-                <div className="flex justify-center mt-5">
-                    <div className="btn" onClick={handleSignUp}>{signUpText}</div>
+              <div className="flex justify-center mt-5">
+                <div className="btn" onClick={handleSignUp}>
+                  {signUpText}
                 </div>
+              </div>
 
-                <Divider/>
-                <div className="text-center text-gray-800">Already have an account? <Link to={'/login'} className="text-[--primary] font-bold underline">Log In</Link></div>
+              <Divider />
+              <div className="text-center text-gray-800">
+                Already have an account?{" "}
+                <Link
+                  to={"/login"}
+                  className="text-[--primary] font-bold underline"
+                >
+                  Log In
+                </Link>
+              </div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
