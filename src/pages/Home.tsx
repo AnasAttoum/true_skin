@@ -1,11 +1,15 @@
 import Title from "../components/Title";
-import { products } from "../constants/data";
 import ProductCard from "../components/ProductCard";
 import Intro from "../sections/Intro";
 import Tale from "../sections/Tale";
 import HelmetDetails from "../components/HelmetDetails";
+import { useSelector } from "react-redux";
+import { RootState } from "../lib/store";
 
 export default function Home() {
+
+  const products = useSelector((state:RootState) => state.product)
+
   return (
     <>
       <HelmetDetails

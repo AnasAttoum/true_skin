@@ -19,7 +19,7 @@ const { ref: image, entry: imageEntry, inView: imageInView } = useInView();
 const dispatch = useDispatch()
 const navigate= useNavigate()
 
-const { isLogged }=useSelector((state:RootState)=>state.user)
+const { isLogged,isAdmin }=useSelector((state:RootState)=>state.user)
 
 useEffect(() => {
     if (titleInView && titleEntry) {
@@ -34,8 +34,12 @@ useEffect(() => {
 
 useEffect(()=>{
     if(isLogged)
+      if(isAdmin)
+        navigate('/dashboard')
+      else
         navigate('/')
-},[isLogged,navigate])
+
+},[isLogged, isAdmin, navigate])
 
   const [data, setData] = useState({
     email: "",

@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../constants/data";
 import QuantityInput from "../components/inputs/QualityInput";
 import { useInView } from "react-intersection-observer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../lib/slices/cartSlice";
 import HelmetDetails from "../components/HelmetDetails";
+import { RootState } from "../lib/store";
 
 export default function ProductDetails() {
+
+  const products = useSelector((state: RootState) => state.product);
+
   const { ref: title, entry: titleEntry, inView: titleInView } = useInView();
   const { ref: image, entry: imageEntry, inView: imageInView } = useInView();
 
@@ -31,7 +34,7 @@ export default function ProductDetails() {
       });
       if (found) setData(found);
     }
-  }, [productId]);
+  }, [productId,products]);
 
   useEffect(() => {
     if (titleInView && titleEntry) {

@@ -1,11 +1,15 @@
 import ProductCard from "../components/ProductCard";
 import ProductsPagination from "../components/ProductsPagination";
 import Title from "../components/Title";
-import { products } from "../constants/data";
 import { useEffect, useState } from "react";
 import HelmetDetails from "../components/HelmetDetails";
+import { useSelector } from "react-redux";
+import { RootState } from "../lib/store";
 
 export default function Products() {
+
+  const products = useSelector((state: RootState) => state.product);
+
   const [page, setPage] = useState(1);
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./constants/data";
 import { HelmetProvider } from "react-helmet-async";
 import Auth from "./utils/Auth";
+import AdminHeader from "./components/AdminHeader";
 
 const LazySignUp = lazy(() => import("./pages/SignUp"));
 const LazyLogIn = lazy(() => import("./pages/LogIn"));
@@ -15,6 +16,10 @@ const LazyHome = lazy(() => import("./pages/Home"));
 const LazyProducts = lazy(() => import("./pages/Products"));
 const LazyProductDetails = lazy(() => import("./pages/ProductDetails"));
 const LazyCart = lazy(() => import("./pages/Cart"));
+
+// Routes only for Admin
+const LazyAdminProducts = lazy(() => import("./pages/dashboard/products"));
+
 
 function App() {
   return (
@@ -28,12 +33,14 @@ function App() {
               <Route path="/login" element={<Suspense fallback={<Loading />}><LazyLogIn /></Suspense>} />
 
               <Route path="/" element={<Header />}>
-
                 <Route index element={<Suspense fallback={<Loading />}><LazyHome /></Suspense>} />
                 <Route path="products" element={<Suspense fallback={<Loading />}><LazyProducts /></Suspense>} />
                 <Route path="products/:productId" element={<Suspense fallback={<Loading />}><LazyProductDetails /></Suspense>} />
                 <Route path="cart" element={<Suspense fallback={<Loading />}><LazyCart /></Suspense>} />
+              </Route>
 
+              <Route path="/dashboard" element={<AdminHeader />}>
+                <Route index element={<Suspense fallback={<Loading />}><LazyAdminProducts /></Suspense>} />
               </Route>
 
             </Routes>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Title from "../components/Title";
-import { products } from "../constants/data";
 import { Tooltip } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../lib/store";
@@ -11,6 +10,7 @@ import HelmetDetails from "../components/HelmetDetails";
 
 export default function Cart() {
 
+  const products = useSelector((state: RootState) => state.product);
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch()
   const idRef=useRef<number>()
