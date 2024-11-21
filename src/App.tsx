@@ -18,7 +18,7 @@ const LazyProductDetails = lazy(() => import("./pages/ProductDetails"));
 const LazyCart = lazy(() => import("./pages/Cart"));
 
 // Routes only for Admin
-const LazyAdminProducts = lazy(() => import("./pages/dashboard/products"));
+const LazyAdminProducts = lazy(() => import("./pages/dashboard/Products"));
 
 
 function App() {
