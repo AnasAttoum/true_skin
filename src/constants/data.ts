@@ -78,7 +78,7 @@ export const products = [
     price: 47.95,
     stock: 10,
     image:
-      "/images/products/ILIA - The Base Face Milk Essence + Lightweight Moisturizer.jpeg",
+      "/images/products/ILIA The Base Face Milk Essence Lightweight Moisturizer.jpeg",
     description:
       "The Base Face Milk: Your daily dose of hydration. This lightweight, milky lotion melts into skin, delivering intense moisture without feeling heavy or greasy. Packed with [mention key ingredients and their benefits, e.g., hyaluronic acid for plumping, ceramides for barrier repair], The Base Face Milk leaves your skin feeling soft, supple, and beautifully balanced. Perfect for all skin types, especially those needing extra hydration.",
   },
