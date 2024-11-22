@@ -21,7 +21,6 @@ export const productSlice = createSlice({
       state,
       action: PayloadAction<{name: string;price: number;stock: number;image: string;description: string;}>
     ) => {
-      // console.log(state[state.length].id+1);
       let newId=0;
       state.forEach((product)=>{
         if(product.id>newId)
@@ -30,10 +29,22 @@ export const productSlice = createSlice({
       state.unshift({id:newId,...action.payload});
       localStorage.setItem("products", JSON.stringify(state));
     },
+    editProduct: (
+      state,
+      action: PayloadAction<product>
+    ) => {
+      const newState = state.map((product)=>{
+        if(product.id===action.payload.id)
+          return action.payload
+        return product
+      });
+      localStorage.setItem("products", JSON.stringify(newState));
+      return newState;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { initProducts, deleteProduct, addProduct } = productSlice.actions;
+export const { initProducts, deleteProduct, addProduct, editProduct } = productSlice.actions;
 
 export default productSlice.reducer;

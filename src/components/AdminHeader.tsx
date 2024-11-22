@@ -24,7 +24,6 @@ export default function AdminHeader() {
 
   useEffect(()=>{
     const user : {isLogged:boolean, isAdmin:boolean} = JSON.parse(localStorage.getItem('user')||"{}")
-    console.log("🚀 ~ useEffect ~ user:", user)
     if(!user.isLogged || !user.isAdmin)
       navigate('/login')
   },[isLogged, isAdmin, navigate])
