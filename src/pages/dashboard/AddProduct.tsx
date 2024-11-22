@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Title from "../../components/Title";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,8 +6,23 @@ import BasicTextField from "../../components/inputs/BasicTextField";
 import { validateProduct } from "../../validations/validation";
 import { Button, FormHelperText } from "@mui/material";
 import { addProduct } from "../../lib/slices/productSlice";
+import { useInView } from "react-intersection-observer";
 
 export default function AddProduct() {
+
+  const { ref: form, entry: formEntry, inView: formInView } = useInView();
+  const { ref: image, entry: imageEntry, inView: imageInView } = useInView();
+
+  useEffect(() => {
+    if (formInView && formEntry) {
+      (formEntry.target as HTMLElement).style.animation =
+        "toLeftAnimation 1s 1s forwards";
+    }
+    if (imageInView && imageEntry) {
+      (imageEntry.target as HTMLElement).style.animation =
+        "opacityAnimation 1s .5s forwards";
+    }
+  }, [formInView, formEntry, imageInView, imageEntry]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -74,7 +89,7 @@ export default function AddProduct() {
                 <Title title="Add Product" />
 
                 <div className="flex max-sm:flex-col justify-evenly p-5">
-                    <div className="flex flex-col justify-center items-center gap-5 w-full sm:w-1/4">
+                    <div className="flex flex-col justify-center items-center gap-5 w-full sm:w-1/4 opacity-0" ref={image}>
                         <img src={data.image} alt={data.name} className="rounded-md h-28" />
                         <Button variant="contained" component="label" sx={{
                             backgroundColor: 'var(--primary)',
@@ -88,7 +103,7 @@ export default function AddProduct() {
                         <FormHelperText sx={{ color: '#d32f2f' }}>{error.image}</FormHelperText>
                     </div>
                 
-                    <div className="w-full sm:w-3/4">
+                    <div className="w-full sm:w-3/4 opacity-0" ref={form}>
                         <BasicTextField val={data.name} handleChange={handleChange} error={error.name} name="name" label="Name" />
                         <BasicTextField val={data.price} handleChange={handleChange} error={error.price} name="price" label="Price ($)" />
                         <BasicTextField val={data.stock} handleChange={handleChange} error={error.stock} name="stock" label="In Stock" />

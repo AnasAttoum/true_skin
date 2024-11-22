@@ -3,6 +3,7 @@ import { createTheme } from "@mui/material";
 export const links = [
   { name: "Home", url: "/" },
   { name: "Products", url: "/products" },
+  { name: "Profile", url: "/profile" },
 ];
 
 export const theme = createTheme({

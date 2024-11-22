@@ -19,3 +19,8 @@ export const validateProduct = Yup.object({
   stock: Yup.number().min(1, "Number of products in the stock must be at least 1 product").required("Invalid Name"),
   description: Yup.string().min(15,"Product name must be at least 15 characters").required("Invalid Description"),
 });
+
+export const validateProfile = Yup.object({
+  name: Yup.string().min(3,'Name must be at least 3 characters').required('Invalid Name'),
+  address: Yup.string().min(10,'Address must be at least 10 characters').required('Invalid Address'),
+});

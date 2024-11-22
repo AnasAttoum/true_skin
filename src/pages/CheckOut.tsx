@@ -107,7 +107,7 @@ export default function CheckOut() {
                 return product.id === el.id;
               });
               return (
-                <div className="flex justify-between w-3/4 lg:w-1/2">
+                <div key={el.id} className="flex justify-between w-3/4 lg:w-1/2">
                   <div className="text-gray-800">
                     {data?.name}{" "}
                     <span className="font-bold"> x {el.quantity}</span>
