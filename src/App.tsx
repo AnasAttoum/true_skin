@@ -16,6 +16,7 @@ const LazyHome = lazy(() => import("./pages/Home"));
 const LazyProducts = lazy(() => import("./pages/Products"));
 const LazyProductDetails = lazy(() => import("./pages/ProductDetails"));
 const LazyCart = lazy(() => import("./pages/Cart"));
+const LazyCheckOut = lazy(() => import("./pages/CheckOut"));
 
 // Routes only for Admin
 const LazyAdminProducts = lazy(() => import("./pages/dashboard/Products"));
@@ -39,6 +40,7 @@ function App() {
                 <Route path="products" element={<Suspense fallback={<Loading />}><LazyProducts /></Suspense>} />
                 <Route path="products/:productId" element={<Suspense fallback={<Loading />}><LazyProductDetails /></Suspense>} />
                 <Route path="cart" element={<Suspense fallback={<Loading />}><LazyCart /></Suspense>} />
+                <Route path="checkout" element={<Suspense fallback={<Loading />}><LazyCheckOut /></Suspense>} />
               </Route>
 
               <Route path="/dashboard" element={<AdminHeader />}>
