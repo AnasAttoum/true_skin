@@ -93,7 +93,7 @@ useEffect(()=>{
         description="Log In now to True Skin"
       />
       <div className="flex items-center justify-between relative">
-        <div className="flex flex-col gap-5 w-full md:w-1/2 max-md:bg-[#fff9] max-md:backdrop-blur-sm max-md:min-h-screen">
+        <div className="flex flex-col gap-5 w-full md:w-1/2 max-md:bg-[#fff9] max-md:backdrop-blur-sm max-md:min-h-screen z-10">
           <div>
             <Title title="Welcome To True Skin" />
             <Title title="Log In" />
@@ -136,7 +136,7 @@ useEffect(()=>{
           </div>
         </div>
         <div
-          className="flex max-md:absolute max-md:w-full max-md:min-h-screen max-md:opacity-5 justify-start w-1/2 h-screen opacity-0"
+          className="flex max-md:absolute max-md:w-full max-md:min-h-screen max-md:opacity-5 justify-start w-1/2 h-screen opacity-0 z-0"
           ref={image}
         >
           <img
