@@ -100,7 +100,7 @@ export default function Cart() {
                     {quantity}
                     <svg
                       style={
-                        quantity <= data?.stock
+                        quantity < data?.stock
                           ? { cursor: "pointer" }
                           : { cursor: "pointer", visibility: "hidden" }
                       }

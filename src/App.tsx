@@ -19,6 +19,7 @@ const LazyCart = lazy(() => import("./pages/Cart"));
 
 // Routes only for Admin
 const LazyAdminProducts = lazy(() => import("./pages/dashboard/Products"));
+const LazyAdminAddProduct = lazy(() => import("./pages/dashboard/AddProduct"));
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 
               <Route path="/dashboard" element={<AdminHeader />}>
                 <Route index element={<Suspense fallback={<Loading />}><LazyAdminProducts /></Suspense>} />
+                <Route path="add" element={<Suspense fallback={<Loading />}><LazyAdminAddProduct /></Suspense>} />
               </Route>
 
             </Routes>

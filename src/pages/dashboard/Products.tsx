@@ -10,6 +10,7 @@ import HelmetDetails from "../../components/HelmetDetails";
 import { Link } from "react-router-dom";
 import DeleteDialog from "../../components/DeleteDialog";
 import { deleteProduct } from "../../lib/slices/productSlice";
+import FloatingButton from "../../components/FloatingButton";
 
 export default function Products() {
 
@@ -110,6 +111,7 @@ export default function Products() {
     </div>
 
     <DeleteDialog open={openDeleteModal} handleClose={handleCloseDeleteModal} handleAgree={handleDelete}  text="Are you sure you want to delete tis product?" />
+    <FloatingButton url='/dashboard/add' tooltip='Add Product' />
     </>
   );
 }

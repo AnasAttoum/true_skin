@@ -53,7 +53,8 @@ export default function Header() {
   };
 
   useEffect(()=>{
-    if(pathname!=='/'&&!isLogged)
+    const user : {isLogged:boolean} = JSON.parse(localStorage.getItem('user')||"{}")
+    if(pathname!=='/'&&!user.isLogged)
       navigate('/login')
   },[pathname, isLogged, navigate])
 
