@@ -9,11 +9,11 @@ export default function Tale() {
   useEffect(() => {
     if (titleInView && titleEntry) {
       (titleEntry.target as HTMLElement).style.animation =
-        "toLeftAnimation 1s 1.5s forwards";
+        "toLeftAnimation 1s 1s forwards";
     }
     if (imageInView && imageEntry) {
       (imageEntry.target as HTMLElement).style.animation =
-        "opacityAnimation 1s 1s forwards";
+        "opacityAnimation 1s .5s forwards";
     }
   }, [titleInView, titleEntry, imageInView, imageEntry]);
 

@@ -10,7 +10,7 @@ export default function Intro() {
     useEffect(() => {
       if (titleInView && titleEntry) {
         (titleEntry.target as HTMLElement).style.animation =
-          "toRightAnimation 1s 1.5s forwards";
+          "toRightAnimation 1s 1s forwards";
       }
       if (imageInView && imageEntry) {
         (imageEntry.target as HTMLElement).style.animation =

@@ -134,7 +134,7 @@ export default function Profile() {
                           <img
                             src={data?.image}
                             alt={data?.name}
-                            className="w-16 h-16"
+                            className="w-16 h-16 object-contain"
                           />{" "}
                           x {element.quantity}
                         </Link>

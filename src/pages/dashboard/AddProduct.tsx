@@ -69,15 +69,18 @@ export default function AddProduct() {
         description: "",
       });
       try {
-          await validateProduct.validate(data, { abortEarly: false });
+        await validateProduct.validate(data, { abortEarly: false });
           dispatch(addProduct(data))
           navigate('/dashboard')
       } catch (error: any) {
-        error.inner.forEach(
-          ({ path, message }: { path: string; message: string }) => {
-            setError((prev) => ({ ...prev, [path]: message }));
-          }
-        );
+        if(error.inner)
+          error.inner.forEach(
+            ({ path, message }: { path: string; message: string }) => {
+              setError((prev) => ({ ...prev, [path]: message }));
+            }
+          );
+        else
+          setError((prev)=>({...prev,image:error.message+" try to change the image"}))
       }
     };
 
@@ -100,7 +103,7 @@ export default function AddProduct() {
                             Upload Product Image
                             <input type="file" accept="image/*" hidden onChange={handleSwitchImage} />
                         </Button>
-                        <FormHelperText sx={{ color: '#d32f2f' }}>{error.image}</FormHelperText>
+                        <FormHelperText sx={{ color: '#d32f2f', textAlign:'center' }}>{error.image}</FormHelperText>
                     </div>
                 
                     <div className="w-full sm:w-3/4 opacity-0" ref={form}>
