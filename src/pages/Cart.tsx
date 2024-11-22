@@ -35,7 +35,7 @@ export default function Cart() {
           <iframe
             src="/images/empty.svg"
             title="Your Cart is Empty"
-            style={{ height: "calc(100vh - 200px)", width: "100vw" }}
+            style={{ height: "calc(100vh - 300px)", width: "100vw" }}
           />
         </div>
       ) : (
